@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Covid-19</string>
+    <string name="title_activity_second_screen">secondScreen</string>
+</resources>

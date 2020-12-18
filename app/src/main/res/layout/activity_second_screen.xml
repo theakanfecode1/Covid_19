@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/black"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".secondScreen"
+        android:id="@+id/general"
+        android:background="@color/light_black">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/black">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="50dp"
+                        android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="Location"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/callncdc"
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="center"
+                        android:text="Tap to refresh"
+                        android:textColor="@color/white"
+                        app:layout_constraintBaseline_toBaselineOf="@id/location"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+
+        <TextView
+            android:id="@+id/covid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Search"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text=" country"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/covid"
+            app:layout_constraintLeft_toRightOf="@+id/covid"
+            app:layout_constraintTop_toTopOf="@+id/covid"
+            tools:layout_editor_absoluteX="160dp" />
+        <ProgressBar
+            android:visibility="invisible"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="7dp"
+            android:id="@+id/progressbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/locationcardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            app:cardBackgroundColor="@color/black"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintTop_toBottomOf="@id/covid"
+            tools:layout_editor_absoluteX="30dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <TextView
+                    android:id="@+id/countryname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Select country"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/dropdown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_expand_more_black_24dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/white"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/detailscardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            app:cardBackgroundColor="@color/black"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintTop_toBottomOf="@id/locationcardView"
+            tools:layout_editor_absoluteX="30dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:src="@mipmap/ic_robe_foreground"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/confirmedcases"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="Confirmed"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/confirmedcasesnumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_extrabold"
+                    android:text="0"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="@+id/confirmedcases"
+                    app:layout_constraintTop_toBottomOf="@id/confirmedcases" />
+                <View
+                    android:id="@+id/view"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#4B4949"
+                    app:layout_constraintTop_toBottomOf="@id/confirmedcasesnumber"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
+                <TextView
+                    android:id="@+id/active"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="Active"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view" />
+
+                <TextView
+                    android:id="@+id/activecasesnumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_extrabold"
+                    android:text="0"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="@+id/confirmedcases"
+                    app:layout_constraintTop_toBottomOf="@id/active" />
+
+                <TextView
+                    android:id="@+id/recover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="Recovered"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/death"
+                    app:layout_constraintStart_toEndOf="@+id/active"
+                    app:layout_constraintTop_toBottomOf="@id/view" />
+
+                <TextView
+                    android:id="@+id/recoveredcasesnumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_extrabold"
+                    android:text="0"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="@+id/recover"
+                    app:layout_constraintTop_toBottomOf="@id/recover" />
+
+                <TextView
+                    android:id="@+id/death"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="Death"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/view" />
+
+                <TextView
+                    android:id="@+id/deathcasesnumbers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_extrabold"
+                    android:text="0"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@id/death"
+                    app:layout_constraintTop_toBottomOf="@id/death" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/outbreakgeneral"
+            app:layout_constraintTop_toBottomOf="@id/detailscardView"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/black"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="340dp">
+
+                    <TextView
+                        android:id="@+id/outbreak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Outbreak in "
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.128"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textViewoutbreak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="specified country"
+                        android:textColor="@color/green"
+                        android:textSize="20sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/outbreak"
+                        app:layout_constraintLeft_toRightOf="@+id/outbreak"
+                        app:layout_constraintTop_toTopOf="@+id/outbreak"
+                        tools:layout_editor_absoluteX="160dp" />
+
+                    <TextView
+                        android:id="@+id/in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="The outbreak in"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        app:layout_constraintStart_toStartOf="@+id/outbreak"
+                        app:layout_constraintTop_toBottomOf="@+id/outbreak" />
+
+                    <TextView
+                        android:id="@+id/innigeria"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="specified country"
+                        android:textColor="@color/green"
+                        android:textSize="11sp"
+                        app:layout_constraintBaseline_toBaselineOf="@id/in"
+                        app:layout_constraintStart_toEndOf="@+id/in" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="should have about"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        app:layout_constraintBaseline_toBaselineOf="@id/innigeria"
+                        app:layout_constraintStart_toEndOf="@+id/innigeria" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="60dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/outbreakbackground"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:gravity="center"
+                        android:text="TODAY"
+                        android:textColor="@color/green"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toStartOf="@+id/in"
+                        app:layout_constraintTop_toBottomOf="@+id/in" />
+
+
+                    <TextView
+                        android:id="@+id/outbreaktoday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="0"
+                        android:textColor="@color/green"
+                        android:textSize="20sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
+                        app:layout_constraintStart_toEndOf="@+id/textView7" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Confirmed"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/outbreaktoday"
+                        app:layout_constraintTop_toBottomOf="@+id/outbreaktoday" />
+
+                    <TextView
+                        android:id="@+id/tomorrow"
+                        android:layout_width="75dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/outbreakbackground"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:gravity="center"
+                        android:text="TOMORROW"
+                        android:textColor="@color/green"
+                        android:textSize="10sp"
+                        app:layout_constraintBaseline_toBaselineOf="@id/outbreaktoday"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.351"
+                        app:layout_constraintStart_toEndOf="@+id/outbreaktoday"
+                        app:layout_constraintTop_toBottomOf="@+id/in" />
+
+                    <TextView
+                        android:id="@+id/outbreaktomorrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="0"
+                        android:textColor="@color/green"
+                        android:textSize="20sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tomorrow"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/tomorrow" />
+
+                    <TextView
+                        android:id="@+id/last"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Tomorrow"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/outbreaktomorrow"
+                        app:layout_constraintTop_toBottomOf="@+id/outbreaktomorrow" />
+
+                    <View
+                        android:id="@+id/line2"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#4B4949"
+                        app:layout_constraintEnd_toEndOf="@+id/last"
+                        app:layout_constraintStart_toStartOf="@+id/textView7"
+                        app:layout_constraintTop_toBottomOf="@id/last" />
+
+                    <TextView
+                        android:id="@+id/days2"
+                        android:layout_width="75dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/outbreakbackground"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:gravity="center"
+                        android:text="2 DAYS AGO"
+                        android:textColor="@color/green"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toStartOf="@+id/in"
+                        app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+                    <TextView
+                        android:id="@+id/ago2days"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="0"
+                        android:textColor="@color/green"
+                        android:textSize="20sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/days2"
+                        app:layout_constraintStart_toEndOf="@+id/days2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Confirmed"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/ago2days"
+                        app:layout_constraintTop_toBottomOf="@+id/ago2days" />
+
+                    <TextView
+                        android:id="@+id/days7"
+                        android:layout_width="75dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/outbreakbackground"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:gravity="center"
+                        android:text="7 DAYS TIME"
+                        android:textColor="@color/green"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toStartOf="@+id/tomorrow"
+                        app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+                    <TextView
+                        android:id="@+id/in7days"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="0"
+                        android:textColor="@color/green"
+                        android:textSize="20sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/days7"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/days7" />
+
+                    <TextView
+                        android:id="@+id/pre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Predicted"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/in7days"
+                        app:layout_constraintTop_toBottomOf="@+id/in7days" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#4B4949"
+                        app:layout_constraintTop_toBottomOf="@id/pre" />
+
+                    <TextView
+                        android:id="@+id/prevent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Prevent the"
+                        android:textColor="@color/green"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.09"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+                    <TextView
+                        android:id="@+id/textVieww"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text=" Corona Virus Outbreak"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/prevent"
+                        app:layout_constraintLeft_toRightOf="@+id/prevent"
+                        app:layout_constraintTop_toTopOf="@+id/prevent"
+                        tools:layout_editor_absoluteX="160dp" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/circleImageView6"
+                        android:layout_width="40dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/circle"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_rubber_gloves"
+                        app:layout_constraintEnd_toStartOf="@+id/circleImageView5"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/prevent"
+                        tools:layout_editor_absoluteY="216dp" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/circleImageView5"
+                        android:layout_width="40dp"
+                        android:layout_height="43dp"
+                        android:background="@drawable/circle"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_medical_mask"
+                        app:layout_constraintEnd_toStartOf="@+id/circleImageView7"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/circleImageView6"
+                        app:layout_constraintTop_toTopOf="@+id/circleImageView6" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/circleImageView7"
+                        android:layout_width="40dp"
+                        android:layout_height="43dp"
+                        android:background="@drawable/circle"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_bubbles"
+                        app:layout_constraintEnd_toStartOf="@+id/circleImageView8"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/circleImageView5"
+                        app:layout_constraintTop_toTopOf="@+id/circleImageView5" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/circleImageView8"
+                        android:layout_width="40dp"
+                        android:layout_height="43dp"
+                        android:background="@drawable/circle"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_hand_sanitizer"
+                        app:layout_constraintEnd_toEndOf="parent"
+
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/circleImageView7"
+                        app:layout_constraintTop_toTopOf="@+id/circleImageView7" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Gloves"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/circleImageView6"
+                        app:layout_constraintStart_toStartOf="@+id/circleImageView6"
+                        app:layout_constraintTop_toBottomOf="@+id/circleImageView6" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Face mask"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/circleImageView5"
+                        app:layout_constraintStart_toStartOf="@+id/circleImageView5"
+                        app:layout_constraintTop_toBottomOf="@+id/circleImageView5" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Soap"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/circleImageView7"
+                        app:layout_constraintStart_toStartOf="@+id/circleImageView7"
+                        app:layout_constraintTop_toBottomOf="@+id/circleImageView7" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Sanitizer"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/circleImageView8"
+                        app:layout_constraintStart_toStartOf="@+id/circleImageView8"
+                        app:layout_constraintTop_toBottomOf="@+id/circleImageView8" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+
